@@ -7,8 +7,8 @@ interface PostProps {
   description: string
 }
 const fetchBlogs = async() => {
-  const BACKEND_URL = process.env.BACKEND_URL!
-  const res = await fetch(`${BACKEND_URL}/users/todos`, {
+  /* const BACKEND_URL = process.env.BACKEND_URL! */
+  const res = await fetch(`https://golang-project.onrender.com/users/todos`, {
    cache: "no-store"
   })
   const data = await res.json()
