@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation"
 import { revalidatePath } from "next/cache"
 import { useState } from "react"
 const postBlog = async({title, description}:{title:string, description:string}) => {
-    const BACKEND_URL = process.env.BACKEND_URL!
-    const  res = fetch(BACKEND_URL , {
+    /* const BACKEND_URL = process.env.BACKEND_URL! */
+    const  res = fetch(`https://golang-project.onrender.com` , {
         method: "POST",
         body: JSON.stringify({title, description}),
         headers: { "Content-Type": "application/json" },       

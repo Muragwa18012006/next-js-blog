@@ -8,8 +8,8 @@ type Props = {
 const DeletBlog = ({result}: Props) => {
     const router = useRouter()
     const handleDelete = async() => {
-      const BACKEND_URL = process.env.BACKEND_URL!
-        const res = await fetch(`${BACKEND_URL}/users/${result}`, {
+      /* const BACKEND_URL = process.env.BACKEND_URL! */
+        const res = await fetch(`https://golang-project.onrender.com/users/${result}`, {
             method: 'DELETE',
         })
         console.log(res)
