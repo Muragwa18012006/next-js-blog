@@ -7,7 +7,8 @@ interface PostProps {
   description: string
 }
 const fetchBlogs = async() => {
-  const res = await fetch('http://localhost:9000/users/todos', {
+  const BACKEND_URL = process.env.BACKEND_URL!
+  const res = await fetch(`${BACKEND_URL}/users/todos`, {
    cache: "no-store"
   })
   const data = await res.json()

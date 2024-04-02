@@ -8,7 +8,8 @@ type Props = {
 const DeletBlog = ({result}: Props) => {
     const router = useRouter()
     const handleDelete = async() => {
-        const res = await fetch(`http://localhost:9000/users/${result}`, {
+      const BACKEND_URL = process.env.BACKEND_URL!
+        const res = await fetch(`${BACKEND_URL}/users/${result}`, {
             method: 'DELETE',
         })
         console.log(res)

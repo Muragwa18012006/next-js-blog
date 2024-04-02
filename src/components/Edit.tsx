@@ -6,7 +6,8 @@ import { useState } from "react"
 
 
 const postBlog = async({title, description, id}:{title:string, description:string, id:string|string[]}) => {
-    const  res = fetch(`http://localhost:9000/users/update/${id}`, {
+    const BACKEND_URL = process.env.BACKEND_URL!
+    const  res = fetch(`${BACKEND_URL}/users/update/${id}`, {
         method: "PUT",
         body: JSON.stringify({title, description}),
         headers: { "Content-Type": "application/json" },       
@@ -15,7 +16,8 @@ const postBlog = async({title, description, id}:{title:string, description:strin
     
 }
 const GetBlogById = async(id:string) => {
-    const res = await fetch(`http://localhost:9000/users/todos/${id}`)
+    const BACKEND_URL = process.env.BACKEND_URL!
+    const res = await fetch(`${BACKEND_URL}/users/todos/${id}`)
     return res.json()
 }
 type Props = {

@@ -3,7 +3,8 @@ import Edit from '@/components/Edit'
 
 const page = async({ params }:{params: {id: string}}) => {
     const { id } = params
-     const res = await fetch(`http://localhost:9000/users/todos/${id}` ,{
+    const BACKEND_URL = process.env.BACKEND_URL!
+     const res = await fetch(`${BACKEND_URL}/users/todos/${id}` ,{
         cache:'no-store'
      })
     const data = await res.json()
