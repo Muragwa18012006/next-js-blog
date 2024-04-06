@@ -1,11 +1,10 @@
 'use client'
-import { useRef,useEffect } from "react"
+import { useRef } from "react"
 import { useRouter } from "next/navigation"
-import { revalidatePath } from "next/cache"
 import { useState } from "react"
 const postBlog = async({title, description}:{title:string, description:string}) => {
     /* const BACKEND_URL = process.env.BACKEND_URL! */
-    const  res = fetch(`https://golang-project.onrender.com` , {
+    const  res = fetch(`https://golang-project.onrender.com/users/addTodos` , {
         method: "POST",
         body: JSON.stringify({title, description}),
         headers: { "Content-Type": "application/json" },       
@@ -24,10 +23,12 @@ const AddBlog = () => {
         if (titleRef.current && descriptionRef.current){
             try {
                 setIsLoading(true)
-      const  info = await postBlog({title: titleRef.current?.value, description:descriptionRef.current?.value})
-      console.log(info)
+                if(titleRef.current?.value && titleRef.current?.value){
+       await postBlog({title: titleRef.current?.value, description:descriptionRef.current?.value})
+       
         router.push('/')
         router.refresh()
+                }
             } catch (error:any) {
                 console.log(error)
             } finally {

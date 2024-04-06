@@ -22,6 +22,7 @@ export default async function Home() {
     <main className=" w-full h-screen">
       <div className="md:w-2/4 sm:w-3/4 m-auto p-4 rounded-lg bg-slate-800 drop-shadow-xl">
         <h1 className='text-slate-200 text-center text-2xl font-extrabold font-[verdana]'>MY FULL STACK Blog With GOLANG</h1>
+        {/* <div className="bg-slate-200 w-[125px] h-[400px] flex  sm:disable">Menu</div> */}
         </div> 
         <div className='flex '>
           <Link href={"/blog/add"} className=" md:w-1/6 sm:w-2/4 text-center rounded-md p-2 m-auto bg-slate-200 font-semibold mt-4">Add New Blog</Link>

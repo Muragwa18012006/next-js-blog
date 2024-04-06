@@ -1,5 +1,5 @@
 "use client"
-import { ChangeEvent, TextareaHTMLAttributes, useRef } from "react"
+import { ChangeEvent, useRef } from "react"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
