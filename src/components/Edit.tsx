@@ -1,31 +1,34 @@
 "use client"
 import { ChangeEvent, useRef } from "react"
-import { useRouter } from "next/navigation"
+import { redirect, useRouter } from "next/navigation"
 import { useState } from "react"
+import { parseCookies } from "nookies"
 
 
 
-const postBlog = async({title, description, id}:{title:string, description:string, id:string|string[]}) => {
-    /* const BACKEND_URL = process.env.BACKEND_URL! */
+const postBlog = async({title, description, id, token}:{title:string, description:string, id:string|string[], token:string}) => {    
+    if(!token){
+        redirect('/login')
+    }
     const  res = fetch(`https://golang-project.onrender.com/users/update/${id}`, {
         method: "PUT",
         body: JSON.stringify({title, description}),
-        headers: { "Content-Type": "application/json" },       
+        headers: { 
+            "Content-Type": "application/json" ,
+            "Authorization": `Bearer ${token}`,
+        },       
     })
     return (await res).json()
     
 }
-const GetBlogById = async(id:string) => {
-    /* const BACKEND_URL = process.env.BACKEND_URL! */
-    const res = await fetch(`https://golang-project.onrender.com/users/todos/${id}`)
-    return res.json()
-}
+
 type Props = {
     title:string,
     id: string,
-    description: string
+    description: string,
+    token: string
 }
-const Edit = ({id, title, description}:Props) => {
+const Edit = ({id, title, description, token}:Props) => {
     const router = useRouter()
     const titleRef = useRef<HTMLInputElement | null>(null)
     const descriptionRef = useRef<HTMLTextAreaElement | null>(null)
@@ -38,7 +41,7 @@ const Edit = ({id, title, description}:Props) => {
         if (titleRef.current && descriptionRef.current){
             try {
                 setIsLoading(true)
-          await postBlog({title: titleRef.current?.value, description:descriptionRef.current?.value, id})
+          await postBlog({title: titleRef.current?.value, description: descriptionRef.current?.value, id, token})
         
          
         router.push('/')
