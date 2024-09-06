@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import { redirect, useRouter } from 'next/navigation'
-import { parseCookies } from 'nookies'
 type Props = {
     result: string
     token: string
@@ -21,7 +20,6 @@ const DeletBlog = ({result, token}: Props) => {
               'Content-Type': 'application/json',
             }
         })
-        console.log(res)
         router.refresh()
     }
   return (

@@ -42,7 +42,6 @@ const Edit = ({id, title, description, token}:Props) => {
                 setIsLoading(true)
           await postBlog({title: titleRef.current?.value, description: descriptionRef.current?.value, id, token})
           const user_id = localStorage.getItem('id');
-          console.log(user_id)
         router.push(`/${user_id}`)
         router.refresh() 
             } catch (error:any) {

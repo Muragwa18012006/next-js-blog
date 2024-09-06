@@ -37,9 +37,7 @@ const Login = () => {
         if(res.ok) {
           const data:DATA = await res.json() 
           localStorage.setItem("id", data.id)
-          console.log(data)
           const token = data.token
-          console.log(token)
           setCookie(null, 'token', token, {
            maxAge: 7 * 24 * 60 * 60, 
               path: '/',
