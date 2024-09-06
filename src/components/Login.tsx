@@ -36,6 +36,7 @@ const Login = () => {
         
         if(res.ok) {
           const data:DATA = await res.json() 
+          localStorage.setItem("id", data.id)
           console.log(data)
           const token = data.token
           console.log(token)

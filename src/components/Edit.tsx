@@ -14,7 +14,7 @@ const postBlog = async({title, description, id, token}:{title:string, descriptio
         body: JSON.stringify({title, description}),
         headers: { 
             "Content-Type": "application/json" ,
-            "token": `${token}`,
+            "token":`${token}`,
         },       
     })
     return (await res).json()
@@ -41,9 +41,9 @@ const Edit = ({id, title, description, token}:Props) => {
             try {
                 setIsLoading(true)
           await postBlog({title: titleRef.current?.value, description: descriptionRef.current?.value, id, token})
-        
-         
-        router.push('/')
+          const user_id = localStorage.getItem('id');
+          console.log(user_id)
+        router.push(`/${user_id}`)
         router.refresh() 
             } catch (error:any) {
                 console.log(error)

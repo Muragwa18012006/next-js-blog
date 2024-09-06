@@ -1,6 +1,5 @@
 import React from 'react'
 import Edit from '@/components/Edit'
-import { parseCookies } from 'nookies'
 import {redirect} from 'next/navigation'
 import { cookies } from "next/headers"
 const page = async({ params }:{params: {id: string}}) => {
@@ -20,8 +19,7 @@ const page = async({ params }:{params: {id: string}}) => {
      })
     const data = await res.json()
     const title = data.Title
-    const description = data.description
-    console.log(title, description) 
+    const description = data.description 
   return (
     <Edit id={id} title={title} description={description} token={token}></Edit>
   )
