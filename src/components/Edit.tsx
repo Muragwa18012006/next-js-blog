@@ -2,7 +2,6 @@
 import { ChangeEvent, useRef } from "react"
 import { redirect, useRouter } from "next/navigation"
 import { useState } from "react"
-import { parseCookies } from "nookies"
 
 
 
@@ -15,7 +14,7 @@ const postBlog = async({title, description, id, token}:{title:string, descriptio
         body: JSON.stringify({title, description}),
         headers: { 
             "Content-Type": "application/json" ,
-            "Authorization": `Bearer ${token}`,
+            "token": `${token}`,
         },       
     })
     return (await res).json()
