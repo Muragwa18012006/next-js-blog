@@ -21,7 +21,10 @@ const page = async({ params }:{params: {id: string}}) => {
     const title = data.Title
     const description = data.description 
   return (
-    <Edit id={id} title={title} description={description} token={token}></Edit>
+    <main className="w-full h-screen bg-gray-900">
+      <Edit id={id} title={title} description={description} token={token}></Edit>
+    </main>
+    
   )
 }
 

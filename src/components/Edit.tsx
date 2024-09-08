@@ -52,9 +52,9 @@ const Edit = ({id, title, description, token}:Props) => {
     }
 }
   return (
-    <div className="w-full m-auto flex my-4">
+    <div className="w-full m-auto flex">
     <div className="flex flex-col justify-center items-center m-auto">
-        <p className="text-2xl text-slate-200 font-bold p-3">Edit A Blog</p>
+        <p className="text-2xl bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 font-bold p-3">Edit A Blog</p>
         <form onSubmit={handleSubmit}>
             <input ref={titleRef} placeholder="Enter a title for blog" type="text" className="rounded-md px-4 py-2 my-2 sm:w-full w-2/3 mx-14 sm:mx-0 " value={newTitle} onChange={(e:ChangeEvent<HTMLInputElement>) => setNewTitle(e.target.value)}/>
             <textarea ref={descriptionRef} className="rounded-md px-4 py-2 sm:w-full my-2 mx-14 sm:mx-0 w-2/3" placeholder="Enter a description" value={newDescription} onChange={(e:ChangeEvent<HTMLTextAreaElement>) => setNewDescription(e.target.value)}></textarea>
